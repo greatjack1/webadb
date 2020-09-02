@@ -57,7 +57,9 @@ function App() {
 
   async function connectClick(e){
     let webusb = await adb().open("WebUSB");
-     adbClient = await webusb.connectAdb("host::");
+     adbClient = await webusb.connectAdb("host::",() =>
+     alert("Please check the screen of your " + webusb.device.productName + " and trust this computers usb debugging key"));
+     console.log("we are connected");
   }
 
   const classes = useStyles();
@@ -69,7 +71,7 @@ function App() {
  Connect
 </Button></Paper>
       </Grid>
-      <Grid item xs={11}>
+      <Grid item xs={12}>
       <Terminal
           color='green'
           backgroundColor='black'
